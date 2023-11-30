@@ -31,6 +31,7 @@ class Play extends Phaser.Scene{
         keyRIGHT= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Space)
 
+        this.jump = true;
         //tile map creation
         const map = this.add.tilemap('tilemapJSON')
         const tileset = map.addTilesetImage('tileset', 'tilesetImage')
@@ -43,14 +44,21 @@ class Play extends Phaser.Scene{
             collides: true
         })
 
-        this.matter.world.convertTilemapLayer(terrainLayer)
-
-        //camera
-        this.cameras.main.setZoom(1)
-
         //player
         const {width, height} = this.scale
-        this.ben = this.matter.add.sprite(width * 0.5, height * 0.5, 'ben').play('player-idle').setFixedRotation()
+        this.ben = this.physics.add.sprite(width * 0.5, height * 0.5, 'ben').play('player-idle')
+        this.ben.body.setSize(10,20).setOffset(25, 46)
+        this.ben.body.setCollideWorldBounds(true)
+        this.ben.body.setGravityY(650)
+
+        //camera
+        this.cameras.main.setZoom(1.5)
+        this.cameras.main.startFollow(this.ben)
+        this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels)
+
+        this.physics.add.collider(this.ben, terrainLayer, ()=>{
+            this.jump = true
+        })
 
         //player animation
         // this.anims.create({
@@ -70,18 +78,35 @@ class Play extends Phaser.Scene{
 
     update()
     {
-        const speed = 2
+        const speed = 100
 
         //Phaser.Input.Keyboard.JustDown(keyLEFT)
         if (this.cursors.left.isDown){
+            this.ben.flipX = true
             this.ben.setVelocityX(-speed)
+            this.ben.play('player-walk', true)
         }
         else if (this.cursors.right.isDown){
+            this.ben.flipX = false
             this.ben.setVelocityX(speed)
+            this.ben.play('player-walk', true)
         }
         else{
             this.ben.setVelocityX(0)
+            this.ben.play('player-idle', true)
         }
+
+        const spaceJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.space)
+
+
+        if (spaceJustPressed && this.jump){
+            this.ben.setVelocityY(-400)
+            this.jump = false
+        }
+    
+
+    
+
     }
 
     createBenAnimations()
