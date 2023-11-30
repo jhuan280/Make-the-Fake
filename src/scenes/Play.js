@@ -47,7 +47,7 @@ class Play extends Phaser.Scene{
         //player
         const {width, height} = this.scale
         this.ben = this.physics.add.sprite(width * 0.5, height * 0.5, 'ben').play('player-idle')
-        this.ben.body.setSize(10,20).setOffset(25, 46)
+        this.ben.body.setSize(10,50).setOffset(25, 16)
         this.ben.body.setCollideWorldBounds(true)
         this.ben.body.setGravityY(650)
 
