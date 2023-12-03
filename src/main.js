@@ -1,8 +1,6 @@
 /*
 Name: Jackie Huang
 Title: Sumo Slammers
-
-
 */
 
 let config = {
@@ -24,6 +22,20 @@ let config = {
     scene: [Menu, Play, Load]
 }
 
+let game = new Phaser.Game(config);
+
+let scoreConfig;
+let highScore = 0;
+// let timer;
+
+//reserve keyboard vars
+let keySPACE, keyRIGHT, keyLEFT, keyR;
+
+//set UI sizes
+let borderUISize = game.config.height / 15;
+let borderPadding = borderUISize / 3;
+
+
 // let config = {
 //     type: Phaser.AUTO,
 //     width: 80 * 16,
@@ -42,16 +54,3 @@ let config = {
 //     },
 //     scene: [Menu, Play, Load]
 // }
-
-
-let game = new Phaser.Game(config);
-let scoreConfig;
-let highScore = 0;
-// let timer;
-
-//reserve keyboard vars
-let keySPACE, keyRIGHT, keyLEFT, keyR;
-
-//set UI sizes
-let borderUISize = game.config.height / 15;
-let borderPadding = borderUISize / 3;

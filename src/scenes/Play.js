@@ -9,13 +9,8 @@ class Play extends Phaser.Scene{
         //player load
         this.load.path = './assets/'
 
-        // this.load.spritesheet('ben', 'ben.png', {
-        //     frameWidth: 16,
-        //     frameHeight: 16,
-
-        // })
-
         this.load.atlas('ben', 'ben.png', 'ben.json')
+        this.load.atlas('enemy', 'enemy.png', 'enemy.json')
 
         //tileset load
         this.load.image('tilesetImage', 'tileset.png')
@@ -24,14 +19,16 @@ class Play extends Phaser.Scene{
 
     create(){
 
+        //create animations
         this.createBenAnimations()
+        this.createEnemyAnimations()
 
         //jumping
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
         keyRIGHT= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Space)
-
         this.jump = true;
+
         //tile map creation
         const map = this.add.tilemap('tilemapJSON')
         const tileset = map.addTilesetImage('tileset', 'tilesetImage')
@@ -39,7 +36,6 @@ class Play extends Phaser.Scene{
         //layers
         const bgLayer = map.createLayer('Background', tileset, 0, 0)
         const terrainLayer = map.createLayer('Terrain', tileset, 0, 0)
-
         terrainLayer.setCollisionByProperty({
             collides: true
         })
@@ -51,30 +47,30 @@ class Play extends Phaser.Scene{
         this.ben.body.setCollideWorldBounds(true)
         this.ben.body.setGravityY(650)
 
+        this.physics.add.collider(this.ben, terrainLayer, ()=>{
+            this.jump = true
+        })
+
+        //enemy
+        this.enemy = new Enemy(this, 656, 768, 'enemy', 0)
+        this.enemy.setVelocityX(-500)
+        this.enemy.play("enemy-walk")
+        // this.enemy.body.setCollideWorldBounds(true)
+        this.enemy.body.setSize(30,50).setOffset(15, 16)
+
         //camera
         this.cameras.main.setZoom(1.5)
         this.cameras.main.startFollow(this.ben)
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels)
 
-        this.physics.add.collider(this.ben, terrainLayer, ()=>{
-            this.jump = true
-        })
+        // this.physics.add.collider(this.ben, terrainLayer, ()=>{
+        //     this.jump = true
+        // })
 
-        //player animation
-        // this.anims.create({
-        //     key: 'run',
-        //     frameRate: 8,
-        //     repeat: -1,
-        //     frames: this.anims.generateFrameNumbers('ben', {
-        //         start: 0,
-        //         end: 4,
-        //         // first: 0
-        //     })
-        // });
-        // this.ben.play('run')
 
         this.cursors = this.input.keyboard.createCursorKeys()
     }
+
 
     update()
     {
@@ -98,17 +94,16 @@ class Play extends Phaser.Scene{
 
         const spaceJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.space)
 
-
         if (spaceJustPressed && this.jump){
             this.ben.setVelocityY(-400)
             this.jump = false
         }
-    
 
-    
+        this.enemy.update()
 
     }
 
+    //player animations
     createBenAnimations()
     {
         this.anims.create({
@@ -128,7 +123,28 @@ class Play extends Phaser.Scene{
             }),
             repeat: -1
         })
+    }
 
+    //enemy animations
+    createEnemyAnimations()
+    {
+        this.anims.create({
+            key: 'enemy-idle',
+            frames: [{ key: 'enemy', frame: 'enemy 0.aseprite' }]
+        })
+
+
+        this.anims.create({
+            key: 'enemy-walk',
+            frameRate: 10,
+            frames: this.anims.generateFrameNames('enemy', {
+                start: 0, 
+                end: 4,
+                prefix: 'enemy ',
+                suffix: '.aseprite'
+            }),
+            repeat: -1
+        })
     }
 
 }
