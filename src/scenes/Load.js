@@ -3,28 +3,71 @@ class Load extends Phaser.Scene{
         super("loadScene")
     }
 
-    // preload(){
+    preload(){
+        this.load.path = './assets/'
 
-    // }
+        this.load.atlas('ben', 'ben.png', 'ben.json')
+        this.load.atlas('enemy', 'enemy.png', 'enemy.json')
 
-    // create(){
-    //     // this.textures.addSpriteSheetFromAtlas('Ben 0.aseprite', {frameHeight: 32, frameWidth: 16, atlas: 'ben', frame: 'Ben 0.aseprite'})
+        //tileset load
+        this.load.image('tilesetImage', 'tileset.png')
+        this.load.tilemapTiledJSON('tilemapJSON', 'overworld.json')
+    }
 
-    //     // this.anims.create({
-    //     //     key: "run",
-    //     //     frameRate: 5,
-    //     //     repeat: -1,
-    //     //     frames: this.anims.generateFrameNames(
-    //     //         'ben', {
-    //     //             prefix: 'Ben ',
-    //     //             start: 0,
-    //     //             end: 4,
-    //     //             suffix: '.aseprite'  
-    //     //     })
-    //     // })
+    create(){
+        //create animations
+        this.createBenAnimations()
+        this.createEnemyAnimations()
 
-    //     // this.scene.start('menuScene')
-    // }
+
+        this.scene.start('playScene')
+    }
+
+//animations --------------------------------------------------------------------------------------
+
+    //player animations
+    createBenAnimations(){
+        this.anims.create({
+            key: 'player-idle',
+            frames: [{ key: 'ben', frame: 'ben 0.aseprite' }]
+        })
+
+
+        this.anims.create({
+            key: 'player-walk',
+            frameRate: 10,
+            frames: this.anims.generateFrameNames('ben', {
+                start: 0, 
+                end: 4,
+                prefix: 'ben ',
+                suffix: '.aseprite'
+            }),
+            repeat: -1
+        })
+    }
+
+    //enemy animations
+    createEnemyAnimations(){
+        this.anims.create({
+            key: 'enemy-idle',
+            frames: [{ key: 'enemy', frame: 'enemy 0.aseprite' }]
+        })
+
+
+        this.anims.create({
+            key: 'enemy-walk',
+            frameRate: 10,
+            frames: this.anims.generateFrameNames('enemy', {
+                start: 0, 
+                end: 4,
+                prefix: 'enemy ',
+                suffix: '.aseprite'
+            }),
+            repeat: -1
+        })
+    }
+
+
 
 
 

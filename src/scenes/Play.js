@@ -4,24 +4,8 @@ class Play extends Phaser.Scene{
         super("playScene")
     }
 
-    preload(){
-
-        //player load
-        this.load.path = './assets/'
-
-        this.load.atlas('ben', 'ben.png', 'ben.json')
-        this.load.atlas('enemy', 'enemy.png', 'enemy.json')
-
-        //tileset load
-        this.load.image('tilesetImage', 'tileset.png')
-        this.load.tilemapTiledJSON('tilemapJSON', 'overworld.json')
-    }
 
     create(){
-
-        //create animations
-        this.createBenAnimations()
-        this.createEnemyAnimations()
 
         //jumping
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
@@ -36,9 +20,13 @@ class Play extends Phaser.Scene{
         //layers
         const bgLayer = map.createLayer('Background', tileset, 0, 0)
         const terrainLayer = map.createLayer('Terrain', tileset, 0, 0)
+
         terrainLayer.setCollisionByProperty({
             collides: true
         })
+
+        //game over
+        this.gameOver = false
 
         //player
         const {width, height} = this.scale
@@ -63,17 +51,15 @@ class Play extends Phaser.Scene{
         this.cameras.main.startFollow(this.ben)
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels)
 
-        // this.physics.add.collider(this.ben, terrainLayer, ()=>{
-        //     this.jump = true
-        // })
 
-
+        //keyboard inputs
         this.cursors = this.input.keyboard.createCursorKeys()
     }
 
 
-    update()
-    {
+    update(){
+
+        //player movement ------------------------------------------------------------
         const speed = 100
 
         //Phaser.Input.Keyboard.JustDown(keyLEFT)
@@ -99,52 +85,19 @@ class Play extends Phaser.Scene{
             this.jump = false
         }
 
+
+        //basic enemies ----------------------------------------------------------
         this.enemy.update()
 
+        this.physics.add.collider(this.ben, this.enemy, (ben,enemy)=>{
+            this.ben.body.setVelocity(0)
+            this.gameOver = true
+            this.scene.start('gameOver')
+
+        })
+
+
     }
 
-    //player animations
-    createBenAnimations()
-    {
-        this.anims.create({
-            key: 'player-idle',
-            frames: [{ key: 'ben', frame: 'ben 0.aseprite' }]
-        })
-
-
-        this.anims.create({
-            key: 'player-walk',
-            frameRate: 10,
-            frames: this.anims.generateFrameNames('ben', {
-                start: 0, 
-                end: 4,
-                prefix: 'ben ',
-                suffix: '.aseprite'
-            }),
-            repeat: -1
-        })
-    }
-
-    //enemy animations
-    createEnemyAnimations()
-    {
-        this.anims.create({
-            key: 'enemy-idle',
-            frames: [{ key: 'enemy', frame: 'enemy 0.aseprite' }]
-        })
-
-
-        this.anims.create({
-            key: 'enemy-walk',
-            frameRate: 10,
-            frames: this.anims.generateFrameNames('enemy', {
-                start: 0, 
-                end: 4,
-                prefix: 'enemy ',
-                suffix: '.aseprite'
-            }),
-            repeat: -1
-        })
-    }
 
 }
