@@ -8,6 +8,8 @@ class Load extends Phaser.Scene{
 
         this.load.atlas('ben', 'ben.png', 'ben.json')
         this.load.atlas('enemy', 'enemy.png', 'enemy.json')
+        this.load.atlas('enemy2', 'enemy.png', 'enemy.json')
+        this.load.atlas('enemy3', 'enemy.png', 'enemy.json')
 
         //tileset load
         this.load.image('tilesetImage', 'tileset.png')

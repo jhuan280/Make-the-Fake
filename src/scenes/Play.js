@@ -39,12 +39,20 @@ class Play extends Phaser.Scene{
             this.jump = true
         })
 
-        //enemy
+        //enemy 1
         this.enemy = new Enemy(this, 656, 768, 'enemy', 0)
         this.enemy.setVelocityX(-500)
         this.enemy.play("enemy-walk")
         // this.enemy.body.setCollideWorldBounds(true)
         this.enemy.body.setSize(30,50).setOffset(15, 16)
+
+        //enemy 2 
+        this.enemy2 = new Enemy(this, 1056, 304, 'enemy', 0)
+        this.enemy2.body.setSize(30,50).setOffset(15, 16)
+
+        //enemy 3
+        this.enemy3 = new Enemy(this, 320, 304, 'enemy', 0)
+        this.enemy3.body.setSize(30,50).setOffset(15, 16)
 
         //camera
         this.cameras.main.setZoom(1.5)
@@ -90,6 +98,20 @@ class Play extends Phaser.Scene{
         this.enemy.update()
 
         this.physics.add.collider(this.ben, this.enemy, (ben,enemy)=>{
+            this.ben.body.setVelocity(0)
+            this.gameOver = true
+            this.scene.start('gameOver')
+
+        })
+
+        this.physics.add.collider(this.ben, this.enemy2, (ben,enemy)=>{
+            this.ben.body.setVelocity(0)
+            this.gameOver = true
+            this.scene.start('gameOver')
+
+        })
+
+        this.physics.add.collider(this.ben, this.enemy3, (ben,enemy)=>{
             this.ben.body.setVelocity(0)
             this.gameOver = true
             this.scene.start('gameOver')
