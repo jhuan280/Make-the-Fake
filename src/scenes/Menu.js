@@ -3,11 +3,6 @@ class Menu extends Phaser.Scene{
         super("menuScene");
     }
 
-    preload(){
-        //load audio
-
-    }
-
     create(){
         //display score
         let menuConfig = {
@@ -26,14 +21,13 @@ class Menu extends Phaser.Scene{
 
         //menu text
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Sumo Slammers', menuConfig).setOrigin(0.5);
-        // this.add.text(game.config.width/2, game.config.height/2, 'Use "SPACEBAR" to jump over obstacles', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press SPACEBAR to start', menuConfig).setOrigin(0.5);
         // menuConfig.backgroundColor = '#00FF00';
         // menuConfig.color = '#000';
         
         //define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        // this.select = this.sound.add('select', {volume: 0.2})
+        this.select = this.sound.add('select', {volume: 0.2})
     }
 
     
@@ -41,14 +35,8 @@ class Menu extends Phaser.Scene{
     update(){
         //start the game
         if (Phaser.Input.Keyboard.JustDown(keySPACE)){
-            // this.select.play()
+            this.select.play()
             this.scene.start('playScene')
-
-            //start the game
-            // game.settings = {
-            //     gameTimer: 0
-            // }
-
 
         }
     }

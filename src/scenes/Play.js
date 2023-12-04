@@ -59,9 +59,24 @@ class Play extends Phaser.Scene{
         this.cameras.main.startFollow(this.ben)
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels)
 
-
         //keyboard inputs
         this.cursors = this.input.keyboard.createCursorKeys()
+
+        //music and audio
+        let loopConfig = {
+            volume: 0.1,
+            loop: true
+        }
+
+        this.music = this.sound.add('bgm', loopConfig)
+        this.dead = this.sound.add('dead', {volume: 0.2})
+        this.jumpSound = this.sound.add('jump', {volume: 0.2})
+
+        //pausing music
+        if (!this.gameOver){
+            this.music.play()
+        }
+
     }
 
 
@@ -90,6 +105,7 @@ class Play extends Phaser.Scene{
 
         if (spaceJustPressed && this.jump){
             this.ben.setVelocityY(-400)
+            this.jumpSound.play()
             this.jump = false
         }
 
@@ -99,21 +115,39 @@ class Play extends Phaser.Scene{
 
         this.physics.add.collider(this.ben, this.enemy, (ben,enemy)=>{
             this.ben.body.setVelocity(0)
+            this.dead.play()
             this.gameOver = true
+
+            if (this.gameOver == true){
+                this.music.stop()
+            }
+
             this.scene.start('gameOver')
 
         })
 
         this.physics.add.collider(this.ben, this.enemy2, (ben,enemy)=>{
             this.ben.body.setVelocity(0)
+            this.dead.play()
             this.gameOver = true
+
+            if (this.gameOver == true){
+                this.music.stop()
+            }
+
             this.scene.start('gameOver')
 
         })
 
         this.physics.add.collider(this.ben, this.enemy3, (ben,enemy)=>{
             this.ben.body.setVelocity(0)
+            this.dead.play()
             this.gameOver = true
+
+            if (this.gameOver == true){
+                this.music.stop()
+            }
+
             this.scene.start('gameOver')
 
         })

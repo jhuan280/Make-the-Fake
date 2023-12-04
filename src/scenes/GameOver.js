@@ -26,11 +26,13 @@ class GameOver extends Phaser.Scene{
         this.add.text(game.config.width/2, game.config.height/2, 'Press "R" to go back to menu', gameOverConfig).setOrigin(0.5);
 
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R)
+        this.select = this.sound.add('select', {volume: 0.2})
 
     }
 
     update(){
         if (Phaser.Input.Keyboard.JustDown(keyR)){
+            this.select.play()
             this.scene.start('menuScene')
         }
 

@@ -14,6 +14,15 @@ class Load extends Phaser.Scene{
         //tileset load
         this.load.image('tilesetImage', 'tileset.png')
         this.load.tilemapTiledJSON('tilemapJSON', 'overworld.json')
+
+        //background music
+        this.load.audio('bgm', 'bgm.mp3')
+
+        //audio effects
+        this.load.audio('jump', 'jump.mp3')
+        this.load.audio('select', 'select.mp3')
+        this.load.audio('dead', 'dead.mp3')
+
     }
 
     create(){
@@ -22,7 +31,7 @@ class Load extends Phaser.Scene{
         this.createEnemyAnimations()
 
 
-        this.scene.start('playScene')
+        this.scene.start('menuScene')
     }
 
 //animations --------------------------------------------------------------------------------------
