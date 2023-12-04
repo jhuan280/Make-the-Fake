@@ -124,7 +124,7 @@ class Play extends Phaser.Scene{
 
         const spaceJustPressed = Phaser.Input.Keyboard.JustDown(this.cursors.space)
 
-        if (spaceJustPressed && this.jump){
+        if (spaceJustPressed && this.jump && this.ben.body.onFloor() && !this.ben.body.onCeiling()){
             this.ben.setVelocityY(-400)
             this.jumpSound.play()
             this.jump = false
