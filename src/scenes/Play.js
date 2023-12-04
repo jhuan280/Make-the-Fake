@@ -23,7 +23,7 @@ class Play extends Phaser.Scene{
 
         terrainLayer.setCollisionByProperty({
             collides: true
-        })
+        })     
 
         //game over
         this.gameOver = false
@@ -38,6 +38,27 @@ class Play extends Phaser.Scene{
         this.physics.add.collider(this.ben, terrainLayer, ()=>{
             this.jump = true
         })
+
+        //coins
+        this.coinSound = this.sound.add('coinUp', {volume: 0.2})
+
+        const coins = map.createFromObjects('Collect', { 
+            type: 'Coin'   
+        })
+
+        this.physics.world.enable(coins)
+        coins.forEach((coin)=>{
+            coin.body.setSize(16, 16).setOffset(24,24)
+            coin.setTexture('coin')
+        })
+
+        this.physics.add.collider(this.ben, coins, (ben, coin)=>{
+            this.coinSound.play()
+            coin.destroy()
+            // coinCount += 1
+            coinCount++
+            console.log(coinCount)
+        })   
 
         //enemy 1
         this.enemy = new Enemy(this, 656, 768, 'enemy', 0)

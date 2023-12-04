@@ -22,11 +22,14 @@ let config = {
     scene: [Load, Menu, Play, GameOver]
 }
 
+//game text config
 let game = new Phaser.Game(config);
+
+//coin iteration
+let coinCount = 0
 
 let scoreConfig;
 let highScore = 0;
-// let timer;
 
 //reserve keyboard vars
 let keySPACE, keyRIGHT, keyLEFT, keyR;
@@ -35,22 +38,3 @@ let keySPACE, keyRIGHT, keyLEFT, keyR;
 let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 
-
-// let config = {
-//     type: Phaser.AUTO,
-//     width: 80 * 16,
-//     height: 60 * 16,
-//     scale: {
-//         autoCenter: Phaser.Scale.CENTER_BOTH
-//     },
-//     render: {
-//         pixelArt: true
-//     },
-//     physics: {
-//         default: 'matter',
-//         matter: {
-//             debug: true,
-//         }
-//     },
-//     scene: [Menu, Play, Load]
-// }

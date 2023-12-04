@@ -13,6 +13,8 @@ class Load extends Phaser.Scene{
 
         //tileset load
         this.load.image('tilesetImage', 'tileset.png')
+        this.load.image('coin', 'coin.png')
+
         this.load.tilemapTiledJSON('tilemapJSON', 'overworld.json')
 
         //background music
@@ -22,6 +24,7 @@ class Load extends Phaser.Scene{
         this.load.audio('jump', 'jump.mp3')
         this.load.audio('select', 'select.mp3')
         this.load.audio('dead', 'dead.mp3')
+        this.load.audio('coinUp', 'pickupCoin.wav')
 
     }
 

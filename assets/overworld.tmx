@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="11">
  <editorsettings>
   <export target="overworld.json" format="json"/>
  </editorsettings>
@@ -95,7 +95,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="2" name="Terrain" width="80" height="60">
+ <layer id="2" name="Terrain" width="80" height="60" locked="1">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -159,4 +159,30 @@
 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3
 </data>
  </layer>
+ <objectgroup id="3" name="Collect">
+  <object id="1" name="OmnitrixSpawn" type="Omnitrix" x="90.6667" y="148">
+   <point/>
+  </object>
+  <object id="2" name="OmnitrixSpawn3" type="Omnitrix" x="1220" y="684">
+   <point/>
+  </object>
+  <object id="3" name="OmnitrixSpawn2" type="Omnitrix" x="1228" y="189.333">
+   <point/>
+  </object>
+  <object id="4" name="CoinSpawn" type="Coin" x="166.667" y="705.333">
+   <point/>
+  </object>
+  <object id="7" name="CoinSpawn2" type="Coin" x="200" y="705">
+   <point/>
+  </object>
+  <object id="8" name="CoinSpawn3" type="Coin" x="232" y="703">
+   <point/>
+  </object>
+  <object id="9" name="CoinSpawn4" type="Coin" x="264" y="704">
+   <point/>
+  </object>
+  <object id="10" name="CoinSpawn5" type="Coin" x="297" y="705">
+   <point/>
+  </object>
+ </objectgroup>
 </map>
