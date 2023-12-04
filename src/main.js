@@ -4,23 +4,27 @@ Title: Sumo Slammers
 */
 
 let config = {
+    parent: 'phaser-game',
     type: Phaser.AUTO,
-    width: 80 * 16,
-    height: 60 * 16,
-    scale: {
-        autoCenter: Phaser.Scale.CENTER_BOTH
-    },
+    width: 1280,
+    height: 960,
+    // scale: {
+    //     autoCenter: Phaser.Scale.CENTER_BOTH
+    // },
     render: {
         pixelArt: true
     },
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true,
+            // debug: true,
+            debug: false,
         }
     },
     scene: [Load, Menu, Play, GameOver]
 }
+
+//global variables----------------------------------------------
 
 //game text config
 let game = new Phaser.Game(config);
