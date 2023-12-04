@@ -4,13 +4,13 @@ Title: Sumo Slammers
 */
 
 let config = {
-    parent: 'phaser-game',
+    // parent: 'phaser-game',
     type: Phaser.AUTO,
-    width: 1280,
-    height: 960,
-    // scale: {
-    //     autoCenter: Phaser.Scale.CENTER_BOTH
-    // },
+    width: 80 * 16,
+    height: 60 * 16,
+    scale: {
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    },
     render: {
         pixelArt: true
     },

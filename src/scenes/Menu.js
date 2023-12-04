@@ -22,6 +22,7 @@ class Menu extends Phaser.Scene{
         //menu text
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Sumo Slammers', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press SPACEBAR to start', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/3, 'Press SPACEBAR to jump', menuConfig).setOrigin(0.5);
         // menuConfig.backgroundColor = '#00FF00';
         // menuConfig.color = '#000';
         
