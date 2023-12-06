@@ -60,6 +60,23 @@ class Play extends Phaser.Scene{
             console.log(coinCount)
         })   
 
+        //omnitrix
+        const omnitrixs = map.createFromObjects('Collect', {
+            type: 'Omnitrix'
+        })
+
+        this.physics.world.enable(omnitrixs)
+        omnitrixs.forEach((omnitrix)=>{
+            omnitrix.body.setSize(60, 60).setOffset(2,2)
+            omnitrix.setTexture('omnitrix')
+        })
+
+        this.physics.add.collider(this.ben, omnitrixs, (ben, omnitrix)=>{
+            omnitrix.destroy()
+            omnitrixCount++
+            console.log(omnitrixCount)
+        })
+
         //enemy 1
         this.enemy = new Enemy(this, 656, 768, 'enemy', 0)
         this.enemy.setVelocityX(-500)

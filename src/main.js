@@ -17,8 +17,8 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            // debug: true,
-            debug: false,
+            debug: true,
+            // debug: false,
         }
     },
     scene: [Load, Menu, Play, GameOver]
@@ -31,6 +31,7 @@ let game = new Phaser.Game(config);
 
 //coin iteration
 let coinCount = 0
+let omnitrixCount = 0
 
 let scoreConfig;
 let highScore = 0;

@@ -14,6 +14,7 @@ class Load extends Phaser.Scene{
         //tileset load
         this.load.image('tilesetImage', 'tileset.png')
         this.load.image('coin', 'coin.png')
+        this.load.image('omnitrix', 'omnitrix.png')
 
         this.load.tilemapTiledJSON('tilemapJSON', 'overworld.json')
 
