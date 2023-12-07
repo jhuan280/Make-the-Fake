@@ -189,9 +189,5 @@ class Play extends Phaser.Scene{
             this.scene.start('gameOver')
 
         })
-
-
     }
-
-
 }
