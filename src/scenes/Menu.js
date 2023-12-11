@@ -4,6 +4,19 @@ class Menu extends Phaser.Scene{
     }
 
     create(){
+        //header
+        this.header = this.add.tileSprite(1280 / 2, 960 / 2, 0, 0, 'menuBackground')
+
+        //play button
+        this.playButton = this.physics.add.image(centerX, 960/2, 'playButton').setScale(5)
+        this.playButton.body.setSize(35,16)
+        this.playButton.setOffset(15,9)
+
+        this.playButton.setInteractive()
+        this.playButton.on('pointerdown', () =>{
+            this.scene.start('playScene')
+        })
+
         //display score
         let menuConfig = {
             fontFamily: 'Courier New',
@@ -19,10 +32,13 @@ class Menu extends Phaser.Scene{
             fixedWidth: 0
         }
 
+
         //menu text
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Sumo Slammers', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press SPACEBAR to start', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/3, 'Press SPACEBAR to jump', menuConfig).setOrigin(0.5);
+        // this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Sumo Slammers', menuConfig).setOrigin(0.5);
+        // this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press SPACEBAR to start', menuConfig).setOrigin(0.5);
+        // this.add.text(game.config.width/2, game.config.height/3, 'Press SPACEBAR to jump', menuConfig).setOrigin(0.5);
+        
+        
         // menuConfig.backgroundColor = '#00FF00';
         // menuConfig.color = '#000';
         

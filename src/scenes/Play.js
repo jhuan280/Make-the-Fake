@@ -61,6 +61,7 @@ class Play extends Phaser.Scene{
         })   
 
         //omnitrix
+        this.omniSound = this.sound.add('omniUp', {volume: 0.2})
         const omnitrixs = map.createFromObjects('Collect', {
             type: 'Omnitrix'
         })
@@ -72,6 +73,7 @@ class Play extends Phaser.Scene{
         })
 
         this.physics.add.collider(this.ben, omnitrixs, (ben, omnitrix)=>{
+            this.omniSound.play()
             omnitrix.destroy()
             omnitrixCount++
             console.log(omnitrixCount)

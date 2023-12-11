@@ -6,8 +6,11 @@ Title: Sumo Slammers
 let config = {
     // parent: 'phaser-game',
     type: Phaser.AUTO,
-    width: 80 * 16,
-    height: 60 * 16,
+    // width: 80 * 16,
+    width: 1280,
+    // height: 60 * 16,
+    height: 960,
+    backgroundColor: 'FAD6A5',
     scale: {
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
@@ -28,6 +31,11 @@ let config = {
 
 //game text config
 let game = new Phaser.Game(config);
+
+//centering
+let height = game.config
+let width = game.config
+let centerX = game.config.width/2
 
 //coin iteration
 let coinCount = 0
