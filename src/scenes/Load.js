@@ -22,6 +22,9 @@ class Load extends Phaser.Scene{
 
         //player attack
         this.load.image('star', 'star.png')
+        
+        //gate
+        this.load.image('gate', 'gate.png')
 
         //tileset load
         this.load.image('tilesetImage', 'tileset.png')

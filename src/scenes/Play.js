@@ -98,6 +98,22 @@ class Play extends Phaser.Scene{
         this.enemy3 = new Enemy(this, 320, 304, 'enemy', 0)
         this.enemy3.body.setSize(30,50).setOffset(15, 16)
 
+        //gate
+        this.gate = this.physics.add.image(centerX + 180, 960/11, 'gate')
+        this.gate.body.setSize(35,30)
+        this.gate.setOffset(14,8)
+        this.physics.add.collider(this.ben, this.gate, (ben,gate)=>{
+
+            if (omnitrixCount == 4 && coinCount >= 4){
+                this.scene.start('winScene')
+            }
+            else{
+                console.log('true')
+                this.gate.setVelocityX(0)
+                this.gate.setImmovable(true)
+            }
+        })
+
         //camera
         this.cameras.main.setZoom(1.5)
         this.cameras.main.startFollow(this.ben)
@@ -153,16 +169,17 @@ class Play extends Phaser.Scene{
             this.jump = false
         }
 
-        // this.attack = this.physics.add.image(this.ben.x, this.player.y, 'star').setScale(4)
-
         //player attack
+        // this.attack = this.physics.add.image(this.ben.x, this.ben.y, 'star').setScale(2)
+        // this.attack.body.setSize(20,16).setOffset(12,9)
+
         if (Phaser.Input.Keyboard.JustDown(this.keyW) && this.cooldown == false){
             // console.log('fire')
             this.cooldown = true
 
             this.attack = this.physics.add.image(this.ben.x, this.ben.y, 'star').setScale(2)
             this.attack.body.setSize(20,16).setOffset(12,9)
-            this.time.delayedCall(2000, ()=>{
+            this.time.delayedCall(1000, ()=>{
                 // console.log()
                 this.cooldown = false
                 this.attack.destroy()
@@ -186,6 +203,7 @@ class Play extends Phaser.Scene{
         //basic enemies ----------------------------------------------------------
         this.enemy.update()
 
+        //ben with enemy 1
         this.physics.add.collider(this.ben, this.enemy, (ben,enemy)=>{
             this.ben.body.setVelocity(0)
             this.dead.play()
@@ -198,6 +216,12 @@ class Play extends Phaser.Scene{
             this.scene.start('gameOver')
 
         })
+
+        // this.physics.add.collider(this.spray, this.enemy, (spray, enemy)=>{
+        //     this.enemy.destroy()
+            
+        // })
+
 
         this.physics.add.collider(this.ben, this.enemy2, (ben,enemy)=>{
             this.ben.body.setVelocity(0)
@@ -224,5 +248,7 @@ class Play extends Phaser.Scene{
             this.scene.start('gameOver')
 
         })
+
+
     }
 }

@@ -24,7 +24,7 @@ let config = {
             // debug: false,
         }
     },
-    scene: [Load, Menu, Play, GameOver]
+    scene: [Load, Menu, Credits, Rules, Play, GameOver, GameWin]
 }
 
 //global variables----------------------------------------------

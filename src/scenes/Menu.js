@@ -32,8 +32,8 @@ class Menu extends Phaser.Scene{
         this.creditsButton.body.setSize(35,16)
         this.creditsButton.setOffset(15,6)
 
-        this.howToButton.setInteractive()
-        this.howToButton.on('pointerdown', () =>{
+        this.creditsButton.setInteractive()
+        this.creditsButton.on('pointerdown', () =>{
             this.scene.start('creditScene')
         })
 
@@ -52,16 +52,6 @@ class Menu extends Phaser.Scene{
             fixedWidth: 0
         }
 
-
-        //menu text
-        // this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'Sumo Slammers', menuConfig).setOrigin(0.5);
-        // this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press SPACEBAR to start', menuConfig).setOrigin(0.5);
-        // this.add.text(game.config.width/2, game.config.height/3, 'Press SPACEBAR to jump', menuConfig).setOrigin(0.5);
-        
-        
-        // menuConfig.backgroundColor = '#00FF00';
-        // menuConfig.color = '#000';
-        
         //define keys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.select = this.sound.add('select', {volume: 0.2})
@@ -70,12 +60,10 @@ class Menu extends Phaser.Scene{
     
 
     update(){
-        //start the game
-        // if (Phaser.Input.Keyboard.JustDown(keySPACE)){
-        //     this.select.play()
-        //     this.scene.start('playScene')
+        // this.scene.stop('menuScene')
+        // this.scene.stop('ruleScene')
 
-        // }
+
     }
 
 }

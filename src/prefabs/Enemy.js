@@ -16,6 +16,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite{
             this.reset()
             // console.log("test")
         }
+
     }
 
     reset(){
