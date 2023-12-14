@@ -17,6 +17,26 @@ class Menu extends Phaser.Scene{
             this.scene.start('playScene')
         })
 
+        //rules button
+        this.howToButton = this.physics.add.image(centerX, 960/1.5, 'howToButton').setScale(5)
+        this.howToButton.body.setSize(35,16)
+        this.howToButton.setOffset(15,9)
+
+        this.howToButton.setInteractive()
+        this.howToButton.on('pointerdown', () =>{
+            this.scene.start('ruleScene')
+        })
+
+        //credits button
+        this.creditsButton = this.physics.add.image(centerX, 960/1.2, 'creditButton').setScale(5)
+        this.creditsButton.body.setSize(35,16)
+        this.creditsButton.setOffset(15,6)
+
+        this.howToButton.setInteractive()
+        this.howToButton.on('pointerdown', () =>{
+            this.scene.start('creditScene')
+        })
+
         //display score
         let menuConfig = {
             fontFamily: 'Courier New',
@@ -51,11 +71,11 @@ class Menu extends Phaser.Scene{
 
     update(){
         //start the game
-        if (Phaser.Input.Keyboard.JustDown(keySPACE)){
-            this.select.play()
-            this.scene.start('playScene')
+        // if (Phaser.Input.Keyboard.JustDown(keySPACE)){
+        //     this.select.play()
+        //     this.scene.start('playScene')
 
-        }
+        // }
     }
 
 }

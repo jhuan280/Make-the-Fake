@@ -39,6 +39,10 @@ class Play extends Phaser.Scene{
             this.jump = true
         })
 
+        //setting keys for player attack
+        this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W)
+        this.cooldown = false
+
         //coins
         this.coinSound = this.sound.add('coinUp', {volume: 0.2})
 
@@ -147,6 +151,35 @@ class Play extends Phaser.Scene{
             this.ben.setVelocityY(-400)
             this.jumpSound.play()
             this.jump = false
+        }
+
+        // this.attack = this.physics.add.image(this.ben.x, this.player.y, 'star').setScale(4)
+
+        //player attack
+        if (Phaser.Input.Keyboard.JustDown(this.keyW) && this.cooldown == false){
+            // console.log('fire')
+            this.cooldown = true
+
+            this.attack = this.physics.add.image(this.ben.x, this.ben.y, 'star').setScale(2)
+            this.attack.body.setSize(20,16).setOffset(12,9)
+            this.time.delayedCall(2000, ()=>{
+                // console.log()
+                this.cooldown = false
+                this.attack.destroy()
+            })
+
+            this.attack.x = this.ben.x
+            this.attack.y = this.ben.y*1.07
+
+            //making the star move
+            if (this.ben.flipX == true){
+                this.attack.setVelocityX(-100)
+            }
+            else{
+                this.attack.setVelocityX(100)
+            }
+
+
         }
 
 

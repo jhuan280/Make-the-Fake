@@ -17,6 +17,11 @@ class Load extends Phaser.Scene{
 
         //buttons
         this.load.image('playButton', 'playButton.png')
+        this.load.image('howToButton', 'howToButton.png')
+        this.load.image('creditButton', 'creditButton.png')
+
+        //player attack
+        this.load.image('star', 'star.png')
 
         //tileset load
         this.load.image('tilesetImage', 'tileset.png')
