@@ -6,7 +6,7 @@ class Rules extends Phaser.Scene{
     create(){
         //credit config
         let creditConfig = {
-            fontFamily: 'Courier New',
+            fontFamily: 'comic sans ms',
             fontSize: '30px',
             // backgroundColor: '#F3B141',
             backgroundColor: '#000000',

@@ -7,7 +7,7 @@ class GameOver extends Phaser.Scene{
     create(){
         //display game over
         let gameOverConfig = {
-            fontFamily: 'Courier New',
+            fontFamily: 'comic sans ms',
             fontSize: '30px',
             // backgroundColor: '#F3B141',
             backgroundColor: '#000000',

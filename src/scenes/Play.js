@@ -156,7 +156,7 @@ class Play extends Phaser.Scene{
         timer = game.settings.gameTimer
 
         let timeConfig = {
-            fontFamily: 'Courier New',
+            fontFamily: 'comic sans ms',
             fontSize: '30px',
             backgroundColor: '#ADD8E6',
             color: '#000000',
