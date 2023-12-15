@@ -1,6 +1,14 @@
 /*
 Name: Jackie Huang
 Title: Sumo Slammers
+
+Technical Execution:
+    - Physics System (Gravity, player movement, enemy movement)
+    - Cameras (Camera following player)
+    - Text Object (Menu text, rules text, credits text, score text, timer text)
+    - Animation Manager (Player animation, enemy animation)
+    - Timers (Attack cool-down timer, timer until player dies)
+    - Tilemaps (main map was constructed using tile maps, tilemap having 3 layers: terrain, background, collectables)
 */
 
 let config = {

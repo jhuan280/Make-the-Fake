@@ -140,7 +140,7 @@ class Play extends Phaser.Scene{
         this.gate.setOffset(14,8)
         this.physics.add.collider(this.ben, this.gate, (ben,gate)=>{
 
-            if (omnitrixCount >= 1 && coinCount >= 4){
+            if (omnitrixCount >= 4 && coinCount >= 50){
                 this.victory.play()
                 this.music.stop()
                 this.scene.start('winScene')
@@ -215,7 +215,7 @@ class Play extends Phaser.Scene{
 //updates -------------------------------------------------------------------------------------------
 
     update(){
-        if (timer == 60){
+        if (timer == 90){
             this.dead.play()
             this.music.stop()
             this.scene.start('gameOver')
@@ -262,7 +262,7 @@ class Play extends Phaser.Scene{
             })
 
             this.attack.x = this.ben.x
-            this.attack.y = this.ben.y*1.1
+            this.attack.y = this.ben.y*1.05
 
             //making the star move
             if (this.ben.flipX == true){

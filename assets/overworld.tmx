@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="96">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="117">
  <editorsettings>
   <export target="overworld.json" format="json"/>
  </editorsettings>
@@ -187,76 +187,37 @@
   <object id="11" type="Coin" x="26.6667" y="784">
    <point/>
   </object>
-  <object id="12" type="Coin" x="64" y="784.167">
-   <point/>
-  </object>
   <object id="13" type="Coin" x="101.333" y="783.333">
-   <point/>
-  </object>
-  <object id="14" type="Coin" x="138" y="783.833">
    <point/>
   </object>
   <object id="15" type="Coin" x="175" y="784">
    <point/>
   </object>
-  <object id="16" type="Coin" x="209.5" y="784">
-   <point/>
-  </object>
   <object id="17" type="Coin" x="246" y="783.5">
-   <point/>
-  </object>
-  <object id="18" type="Coin" x="282.5" y="784.5">
    <point/>
   </object>
   <object id="19" type="Coin" x="319.5" y="783">
    <point/>
   </object>
-  <object id="20" type="Coin" x="360" y="782">
-   <point/>
-  </object>
   <object id="21" type="Coin" x="401.5" y="784">
-   <point/>
-  </object>
-  <object id="22" type="Coin" x="440" y="783">
    <point/>
   </object>
   <object id="23" type="Coin" x="477" y="784">
    <point/>
   </object>
-  <object id="24" type="Coin" x="520" y="784">
-   <point/>
-  </object>
   <object id="25" type="Coin" x="561.5" y="784.5">
-   <point/>
-  </object>
-  <object id="26" type="Coin" x="600.5" y="784">
    <point/>
   </object>
   <object id="27" type="Coin" x="635.5" y="784">
    <point/>
   </object>
-  <object id="28" type="Coin" x="676" y="785">
-   <point/>
-  </object>
   <object id="29" type="Coin" x="717.5" y="784">
-   <point/>
-  </object>
-  <object id="30" type="Coin" x="756.5" y="784">
    <point/>
   </object>
   <object id="31" type="Coin" x="797" y="784.5">
    <point/>
   </object>
-  <object id="32" type="Coin" x="842" y="784.5">
-   <point/>
-  </object>
   <object id="33" type="Coin" x="889" y="785.5">
-   <point/>
-  </object>
-  <object id="34" type="Coin" x="935.5" y="785">
-   <point/>
-  </object>
-  <object id="35" type="Coin" x="1030" y="785">
    <point/>
   </object>
   <object id="36" type="Coin" x="982" y="785.5">
@@ -268,16 +229,7 @@
   <object id="38" type="Coin" x="1150" y="783.5">
    <point/>
   </object>
-  <object id="39" type="Coin" x="1114.5" y="785">
-   <point/>
-  </object>
-  <object id="40" type="Coin" x="1181" y="784">
-   <point/>
-  </object>
   <object id="41" type="Coin" x="1209.5" y="784.5">
-   <point/>
-  </object>
-  <object id="42" type="Coin" x="1238.5" y="783">
    <point/>
   </object>
   <object id="43" type="Coin" x="1267" y="785">
@@ -398,6 +350,36 @@
    <point/>
   </object>
   <object id="94" type="Coin" x="1072.67" y="433.333">
+   <point/>
+  </object>
+  <object id="97" type="Coin" x="673.333" y="389.333">
+   <point/>
+  </object>
+  <object id="99" type="Coin" x="753.333" y="385.333">
+   <point/>
+  </object>
+  <object id="102" type="Coin" x="825.333" y="389.333">
+   <point/>
+  </object>
+  <object id="103" type="Coin" x="778.667" y="294.667">
+   <point/>
+  </object>
+  <object id="104" type="Coin" x="825.333" y="292">
+   <point/>
+  </object>
+  <object id="105" type="Coin" x="870.667" y="290.667">
+   <point/>
+  </object>
+  <object id="111" type="Coin" x="1212" y="512">
+   <point/>
+  </object>
+  <object id="112" type="Coin" x="1248" y="506.667">
+   <point/>
+  </object>
+  <object id="113" type="Coin" x="1125.33" y="594.667">
+   <point/>
+  </object>
+  <object id="116" type="Coin" x="989.333" y="176">
    <point/>
   </object>
  </objectgroup>
