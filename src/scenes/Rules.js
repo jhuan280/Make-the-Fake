@@ -22,7 +22,7 @@ class Rules extends Phaser.Scene{
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
 
         let credit = this.add.text(this.game.config.width / 2, this.game.config.height/3, 
-        'Rules: Your main objective is to unlock the requiremets to pass through the red torii gate at the top of the map\n\n Collect at least 50 coins and 4 omnitrixs in order to pass\n\n You get 90 seconds in order to reach the goal',{
+        'Rules: Your main objective is to unlock the requiremets to pass through the red torii gate at the top of the map\n\n Collect at least 50 coins and 4 omnitrixs in order to pass\n\n You get 90 seconds in order to reach the goal\n\nMovement: \nLeft Arrow to move left\nRight Arrow to move Right\n SPACEBAR to jump\nW to attack',{
             fontFamily: 'Times New Roman',
             fontSize: '18px',
             color: '#000000',
