@@ -32,6 +32,9 @@ let config = {
 //game text config
 let game = new Phaser.Game(config);
 
+//time
+let timer;
+
 //centering
 let height = game.config
 let width = game.config

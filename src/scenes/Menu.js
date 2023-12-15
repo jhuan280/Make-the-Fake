@@ -17,6 +17,11 @@ class Menu extends Phaser.Scene{
             this.scene.start('playScene')
         })
 
+        //start the game
+        game.settings = {
+            gameTimer: 0
+        }
+
         //rules button
         this.howToButton = this.physics.add.image(centerX, 960/1.5, 'howToButton').setScale(5)
         this.howToButton.body.setSize(35,16)

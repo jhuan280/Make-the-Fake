@@ -27,6 +27,8 @@ class Play extends Phaser.Scene{
 
         //game over
         this.gameOver = false
+        let coinCount = 0
+        let omnitrixCount = 0
 
         //player
         const {width, height} = this.scale
@@ -35,13 +37,19 @@ class Play extends Phaser.Scene{
         this.ben.body.setCollideWorldBounds(true)
         this.ben.body.setGravityY(650)
 
-        this.physics.add.collider(this.ben, terrainLayer, ()=>{
-            this.jump = true
-        })
-
         //setting keys for player attack
         this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W)
         this.cooldown = false
+
+        //player attack
+        this.attack = this.physics.add.image(this.ben.x, this.ben.y, 'star').setScale(2)
+        this.attack.body.setSize(20,16).setOffset(12,9)
+        this.attack.setAlpha(0)
+        this.attack.setImmovable()
+
+        this.physics.add.collider(this.ben, terrainLayer, ()=>{
+            this.jump = true
+        })
 
         //coins
         this.coinSound = this.sound.add('coinUp', {volume: 0.2})
@@ -62,6 +70,7 @@ class Play extends Phaser.Scene{
             // coinCount += 1
             coinCount++
             console.log(coinCount)
+            this.coinScore = this.add.text(game.config.width/3.8, borderUISize + borderPadding * 0.5, 'Coins: ' + coinCount, timeConfig).setOrigin(0.5, 1)
         })   
 
         //omnitrix
@@ -81,6 +90,7 @@ class Play extends Phaser.Scene{
             omnitrix.destroy()
             omnitrixCount++
             console.log(omnitrixCount)
+            this.omniScore = this.add.text(game.config.width - 150, borderUISize + borderPadding * 0.5, 'Omnitrixs: ' + omnitrixCount, timeConfig).setOrigin(0.5, 1)
         })
 
         //enemy 1
@@ -90,13 +100,28 @@ class Play extends Phaser.Scene{
         // this.enemy.body.setCollideWorldBounds(true)
         this.enemy.body.setSize(30,50).setOffset(15, 16)
 
+        this.physics.add.collider(this.attack, this.enemy, ()=>{
+            this.enemy.destroy()
+        }, null, this 
+        )
+
         //enemy 2 
         this.enemy2 = new Enemy(this, 1056, 304, 'enemy', 0)
         this.enemy2.body.setSize(30,50).setOffset(15, 16)
 
+        this.physics.add.collider(this.attack, this.enemy2, ()=>{
+            this.enemy2.destroy()
+        }, null, this 
+        )
+
         //enemy 3
         this.enemy3 = new Enemy(this, 320, 304, 'enemy', 0)
         this.enemy3.body.setSize(30,50).setOffset(15, 16)
+
+        this.physics.add.collider(this.attack, this.enemy3, ()=>{
+            this.enemy3.destroy()
+        }, null, this 
+        )
 
         //gate
         this.gate = this.physics.add.image(centerX + 180, 960/11, 'gate')
@@ -104,7 +129,8 @@ class Play extends Phaser.Scene{
         this.gate.setOffset(14,8)
         this.physics.add.collider(this.ben, this.gate, (ben,gate)=>{
 
-            if (omnitrixCount == 4 && coinCount >= 4){
+            if (omnitrixCount >= 1 && coinCount >= 4){
+                this.music.stop()
                 this.scene.start('winScene')
             }
             else{
@@ -113,6 +139,34 @@ class Play extends Phaser.Scene{
                 this.gate.setImmovable(true)
             }
         })
+
+        //time stuff
+        timer = game.settings.gameTimer
+
+        let timeConfig = {
+            fontFamily: 'Courier New',
+            fontSize: '30px',
+            backgroundColor: '#ADD8E6',
+            color: '#000000',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+
+        this.timerDisplay = this.add.text(game.config.width/2, borderUISize + borderPadding * 0.5, 'Time: ' + (timer / 1000), timeConfig).setOrigin(0.5, 1)
+
+        this.clock = this.time.addEvent({
+            delay: 1000,
+            callback: () => {
+                timer += 1
+                this.timerDisplay.text = timer
+            },
+            callbackScope:this,
+            loop: true
+        });
 
         //camera
         this.cameras.main.setZoom(1.5)
@@ -141,6 +195,10 @@ class Play extends Phaser.Scene{
 
 
     update(){
+        if (timer == 60){
+            this.music.stop()
+            this.scene.start('gameOver')
+        }
 
         //player movement ------------------------------------------------------------
         const speed = 100
@@ -169,24 +227,20 @@ class Play extends Phaser.Scene{
             this.jump = false
         }
 
-        //player attack
-        // this.attack = this.physics.add.image(this.ben.x, this.ben.y, 'star').setScale(2)
-        // this.attack.body.setSize(20,16).setOffset(12,9)
-
         if (Phaser.Input.Keyboard.JustDown(this.keyW) && this.cooldown == false){
             // console.log('fire')
             this.cooldown = true
+            this.attack.setAlpha(1)
 
-            this.attack = this.physics.add.image(this.ben.x, this.ben.y, 'star').setScale(2)
-            this.attack.body.setSize(20,16).setOffset(12,9)
             this.time.delayedCall(1000, ()=>{
                 // console.log()
+                this.attack.setAlpha(0).setPosition(0,0)
                 this.cooldown = false
-                this.attack.destroy()
+                // this.attack.destroy()
             })
 
             this.attack.x = this.ben.x
-            this.attack.y = this.ben.y*1.07
+            this.attack.y = this.ben.y*1.05
 
             //making the star move
             if (this.ben.flipX == true){
@@ -216,12 +270,6 @@ class Play extends Phaser.Scene{
             this.scene.start('gameOver')
 
         })
-
-        // this.physics.add.collider(this.spray, this.enemy, (spray, enemy)=>{
-        //     this.enemy.destroy()
-            
-        // })
-
 
         this.physics.add.collider(this.ben, this.enemy2, (ben,enemy)=>{
             this.ben.body.setVelocity(0)
