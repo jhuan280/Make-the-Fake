@@ -14,6 +14,7 @@ class Menu extends Phaser.Scene{
 
         this.playButton.setInteractive()
         this.playButton.on('pointerdown', () =>{
+            this.select.play()
             this.scene.start('playScene')
         })
 
@@ -29,6 +30,7 @@ class Menu extends Phaser.Scene{
 
         this.howToButton.setInteractive()
         this.howToButton.on('pointerdown', () =>{
+            this.select.play()
             this.scene.start('ruleScene')
         })
 
@@ -39,6 +41,7 @@ class Menu extends Phaser.Scene{
 
         this.creditsButton.setInteractive()
         this.creditsButton.on('pointerdown', () =>{
+            this.select.play()
             this.scene.start('creditScene')
         })
 
@@ -65,8 +68,6 @@ class Menu extends Phaser.Scene{
     
 
     update(){
-        // this.scene.stop('menuScene')
-        // this.scene.stop('ruleScene')
 
 
     }

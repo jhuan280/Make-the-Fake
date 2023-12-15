@@ -29,15 +29,15 @@ class Rules extends Phaser.Scene{
             backgroundColor: '#FFFFFF',
         }).setOrigin(0.5)
         
-        
+        this.select = this.sound.add('select', {volume: 0.2})
+        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT) 
         this.add.text(game.config.width/2, game.config.height/1.2, 'Press "<-" to go back to the menu', creditConfig).setOrigin(0.5);
-
     }
 
 
     update(){
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)){
-
+            this.select.play()
             this.scene.start('menuScene')
 
         }

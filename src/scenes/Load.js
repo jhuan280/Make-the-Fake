@@ -42,6 +42,8 @@ class Load extends Phaser.Scene{
         this.load.audio('dead', 'dead.mp3')
         this.load.audio('coinUp', 'pickupCoin.wav')
         this.load.audio('omniUp', 'pickupOmnitrix.mp3')
+        this.load.audio('hit', 'hit.mp3')
+        this.load.audio('victory', 'victory.mp3')
 
     }
 

@@ -25,14 +25,15 @@ class GameWin extends Phaser.Scene{
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press (Left Arrow) to return to menu', menuConfig).setOrigin(0.5);
         
         //define keys
-        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        // this.select = this.sound.add('select', {volume: 0.2})
+        this.select = this.sound.add('select', {volume: 0.2})
+        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
     }
 
 
     update(){
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)){
             // this.select.play()
+            this.select.play()
             this.scene.start('menuScene')
 
         }
