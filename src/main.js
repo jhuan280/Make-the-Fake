@@ -28,8 +28,8 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true,
-            // debug: false,
+            // debug: true,
+            debug: false,
         }
     },
     scene: [Load, Menu, Credits, Rules, Play, GameOver, GameWin]
